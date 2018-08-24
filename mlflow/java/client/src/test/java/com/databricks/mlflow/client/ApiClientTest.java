@@ -1,12 +1,12 @@
-package com.databricks.mlflow.client;
+package org.mlflow.client;
 
 import java.util.*;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import static com.databricks.mlflow.client.TestUtils.*;
-import com.databricks.api.proto.mlflow.Service.*;
-import com.databricks.mlflow.client.objects.*;
+import static org.mlflow.client.TestUtils.*;
+import org.mlflow.api.proto.Service.*;
+import org.mlflow.client.objects.*;
 
 public class ApiClientTest extends BaseTest {
     private static final Logger logger = Logger.getLogger(ApiClientTest.class);

@@ -1,4 +1,4 @@
-package com.databricks.mlflow.client;
+package org.mlflow.client;
 
 import org.testng.annotations.*;
 

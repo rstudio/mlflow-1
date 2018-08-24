@@ -1,11 +1,11 @@
-package com.databricks.mlflow.client;
+package org.mlflow.client;
 
 import java.util.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import com.databricks.api.proto.mlflow.Service.*;
-import com.databricks.mlflow.client.objects.ObjectUtils;
-import static com.databricks.mlflow.client.TestUtils.*;
+import org.mlflow.api.proto.Service.*;
+import org.mlflow.client.objects.ObjectUtils;
+import static org.mlflow.client.TestUtils.*;
 
 public class MultiThreadedTest extends BaseTest {
     List<String> runIds = Collections.synchronizedList(new ArrayList<String>());

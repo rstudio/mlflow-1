@@ -1,9 +1,9 @@
-package com.databricks.mlflow.client;
+package org.mlflow.client;
 
 import java.util.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import com.databricks.api.proto.mlflow.Service.*;
+import org.mlflow.api.proto.Service.*;
 
 /** 
   Check the results of a Python sckit-learn program run in the test Docker container.

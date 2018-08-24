@@ -1,7 +1,7 @@
-com/databricks/mlflow/client/HttpTest.class
-com/databricks/mlflow/client/MultiThreadedTest.class
-com/databricks/mlflow/client/ApiClientTest.class
-com/databricks/mlflow/client/PythonScikitLearnTest.class
-com/databricks/mlflow/client/BaseTest.class
-com/databricks/mlflow/client/TestShared.class
-com/databricks/mlflow/client/TestUtils.class
+org/mlflow/client/BaseTest.class
+org/mlflow/client/ApiClientTest.class
+org/mlflow/client/MultiThreadedTest.class
+org/mlflow/client/PythonScikitLearnTest.class
+org/mlflow/client/TestShared.class
+org/mlflow/client/HttpTest.class
+org/mlflow/client/TestUtils.class

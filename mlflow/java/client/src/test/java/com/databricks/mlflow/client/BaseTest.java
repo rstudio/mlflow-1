@@ -1,4 +1,4 @@
-package com.databricks.mlflow.client;
+package org.mlflow.client;
 
 import java.util.List;
 import org.apache.log4j.Logger;

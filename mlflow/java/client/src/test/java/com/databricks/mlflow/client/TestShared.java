@@ -1,9 +1,9 @@
-package com.databricks.mlflow.client;
+package org.mlflow.client;
 
 import java.util.*;
 import org.testng.Assert;
-import com.databricks.api.proto.mlflow.Service.*;
-import static com.databricks.mlflow.client.TestUtils.*;
+import org.mlflow.api.proto.Service.*;
+import static org.mlflow.client.TestUtils.*;
 
 public class TestShared {
     static float auc = 2.0F;

@@ -1,8 +1,8 @@
-package com.databricks.mlflow.client;
+package org.mlflow.client;
 
 import java.util.*;
 import org.testng.Assert;
-import com.databricks.api.proto.mlflow.Service.*;
+import org.mlflow.api.proto.Service.*;
 
 public class TestUtils {
 
