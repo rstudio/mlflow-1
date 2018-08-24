@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.18">
+<file name="/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/LoaderModule.java">
+</file>
+<file name="/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/Flavor.java">
+</file>
+<file name="/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/utils/SerializationUtils.java">
+</file>
+<file name="/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/utils/EnvironmentUtils.java">
+</file>
+<file name="/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/utils/FileUtils.java">
+</file>
+<file name="/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/models/Model.java">
+</file>
+<file name="/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/mleap/MLeapLoader.java">
+</file>
+<file name="/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/mleap/MLeapFlavor.java">
+</file>
+<file name="/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/sagemaker/PredictorEvaluationException.java">
+</file>
+<file name="/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/sagemaker/ScoringServer.java">
+<error line="191" severity="error" message="Line is longer than 100 characters (found 104)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
+<file name="/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/sagemaker/MLeapPredictor.java">
+</file>
+<file name="/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/sagemaker/Predictor.java">
+</file>
+<file name="/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/sagemaker/PredictorDataWrapper.java">
+</file>
+<file name="/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/sagemaker/PredictorLoadingException.java">
+</file>
+</checkstyle>

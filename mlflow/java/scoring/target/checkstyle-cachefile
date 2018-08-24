@@ -1,0 +1,15 @@
+#Fri Aug 24 14:28:50 PDT 2018
+/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/sagemaker/PredictorDataWrapper.java=1535143269000
+/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/sagemaker/Predictor.java=1535143269000
+/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/LoaderModule.java=1535143269000
+/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/sagemaker/PredictorEvaluationException.java=1535143269000
+/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/Flavor.java=1535143269000
+/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/sagemaker/PredictorLoadingException.java=1535143269000
+/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/mleap/MLeapFlavor.java=1535143269000
+/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/utils/SerializationUtils.java=1535143269000
+/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/sagemaker/MLeapPredictor.java=1535143269000
+/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/models/Model.java=1535143269000
+configuration*?=3D373D593B862299AB0495DD60B2F738AB506386
+/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/utils/FileUtils.java=1535143269000
+/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/utils/EnvironmentUtils.java=1535143269000
+/Users/aaron/db/mlflow/mlflow/java/scoring/src/main/java/org/mlflow/mleap/MLeapLoader.java=1535143269000

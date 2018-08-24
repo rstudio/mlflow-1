@@ -2,14 +2,10 @@ syntax = "proto2";
 
 package mlflow;
 
-import "scalapb/scalapb.proto";
 import "databricks.proto";
 
 option java_package = "com.databricks.api.proto.mlflow";
 option py_generic_services = true;
-option (scalapb.options) = {
-  flat_package: true,
-};
 
 service MlflowService {
   // Create an experiment with a name. Returns the ID of the newly created experiment.
@@ -421,8 +417,6 @@ message Experiment {
 }
 
 message CreateExperiment {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // Experiment name.
   optional string name = 1 [(validate_required) = true];
 
@@ -437,8 +431,6 @@ message CreateExperiment {
 }
 
 message ListExperiments {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // Qualifier for type of experiments to be returned.
   // If unspecified returns only active experiments.
   optional ViewType view_type = 1;
@@ -450,8 +442,6 @@ message ListExperiments {
 }
 
 message GetExperiment {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // Identifier to get an experiment.
   optional int64 experiment_id = 1 [(validate_required) = true];
 
@@ -465,8 +455,6 @@ message GetExperiment {
 }
 
 message DeleteExperiment {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // Identifier to get an experiment
   optional int64 experiment_id = 1 [(validate_required) = true];
 
@@ -475,8 +463,6 @@ message DeleteExperiment {
 }
 
 message RestoreExperiment {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // Identifier to get an experiment
   optional int64 experiment_id = 1 [(validate_required) = true];
 
@@ -485,8 +471,6 @@ message RestoreExperiment {
 }
 
 message CreateRun {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // ID of the associated experiment.
   optional int64 experiment_id = 1;
 
@@ -522,8 +506,6 @@ message CreateRun {
 }
 
 message UpdateRun {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // ID of the run to update.
   optional string run_uuid = 1 [(validate_required) = true];
 
@@ -540,8 +522,6 @@ message UpdateRun {
 }
 
 message LogMetric {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // ID of the run under which to log the metric.
   optional string run_uuid = 1 [(validate_required) = true];
 
@@ -559,8 +539,6 @@ message LogMetric {
 }
 
 message LogParam {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // ID of the run under which to log the param.
   optional string run_uuid = 1 [(validate_required) = true];
 
@@ -575,8 +553,6 @@ message LogParam {
 }
 
 message SetTag {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // ID of the run under which to log the param.
   optional string run_uuid = 1 [(validate_required) = true];
 
@@ -591,8 +567,6 @@ message SetTag {
 }
 
 message GetRun {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // ID of the run to fetch.
   optional string run_uuid = 1 [(validate_required) = true];
 
@@ -603,8 +577,6 @@ message GetRun {
 }
 
 message GetMetric {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // ID of the run from which to retrieve the metric value.
   optional string run_uuid = 1 [(validate_required) = true];
 
@@ -618,8 +590,6 @@ message GetMetric {
 }
 
 message GetParam {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // ID of the run from which to retrieve the param value.
   optional string run_uuid = 1 [(validate_required) = true];
 
@@ -678,8 +648,6 @@ message FloatClause {
 }
 
 message SearchRuns {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // List of experiment IDs to search over.
   repeated int64 experiment_ids = 1;
 
@@ -693,8 +661,6 @@ message SearchRuns {
 }
 
 message ListArtifacts {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // ID of the run whose artifacts to list.
   optional string run_uuid = 1;
 
@@ -723,8 +689,6 @@ message FileInfo {
 }
 
 message GetMetricHistory {
-  option (scalapb.message).extends = "com.databricks.rpc.RPC[$this.Response]";
-
   // ID of the run from which to fetch metric values.
   optional string run_uuid = 1 [(validate_required) = true];
 

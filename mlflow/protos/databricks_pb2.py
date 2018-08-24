@@ -14,17 +14,16 @@ _sym_db = _symbol_database.Default()
 
 
 from google.protobuf import descriptor_pb2 as google_dot_protobuf_dot_descriptor__pb2
-from .scalapb import scalapb_pb2 as scalapb_dot_scalapb__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='databricks.proto',
   package='',
   syntax='proto2',
-  serialized_options=_b('\n#com.databricks.api.proto.databricks\342?\002\020\001'),
-  serialized_pb=_b('\n\x10\x64\x61tabricks.proto\x1a google/protobuf/descriptor.proto\x1a\x15scalapb/scalapb.proto\"\xb1\x01\n\x14\x44\x61tabricksRpcOptions\x12 \n\tendpoints\x18\x01 \x03(\x0b\x32\r.HttpEndpoint\x12\x1f\n\nvisibility\x18\x02 \x01(\x0e\x32\x0b.Visibility\x12\x1f\n\x0b\x65rror_codes\x18\x03 \x03(\x0e\x32\n.ErrorCode\x12\x1e\n\nrate_limit\x18\x04 \x01(\x0b\x32\n.RateLimit\x12\x15\n\rrpc_doc_title\x18\x05 \x01(\t\"N\n\x0cHttpEndpoint\x12\x14\n\x06method\x18\x01 \x01(\t:\x04POST\x12\x0c\n\x04path\x18\x02 \x01(\t\x12\x1a\n\x05since\x18\x03 \x01(\x0b\x32\x0b.ApiVersion\"*\n\nApiVersion\x12\r\n\x05major\x18\x01 \x01(\x05\x12\r\n\x05minor\x18\x02 \x01(\x05\"@\n\tRateLimit\x12\x11\n\tmax_burst\x18\x01 \x01(\x03\x12 \n\x18max_sustained_per_second\x18\x02 \x01(\x03\"\x8c\x01\n\x15\x44ocumentationMetadata\x12\x11\n\tdocstring\x18\x01 \x01(\t\x12\x10\n\x08lead_doc\x18\x02 \x01(\t\x12\x1f\n\nvisibility\x18\x03 \x01(\x0e\x32\x0b.Visibility\x12\x1b\n\x13original_proto_path\x18\x04 \x03(\t\x12\x10\n\x08position\x18\x05 \x01(\x05\"g\n\x1f\x44\x61tabricksServiceExceptionProto\x12\x1e\n\nerror_code\x18\x01 \x01(\x0e\x32\n.ErrorCode\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x13\n\x0bstack_trace\x18\x03 \x01(\t*?\n\nVisibility\x12\n\n\x06PUBLIC\x10\x01\x12\x0c\n\x08INTERNAL\x10\x02\x12\x17\n\x13PUBLIC_UNDOCUMENTED\x10\x03*\xf6\x04\n\tErrorCode\x12\x12\n\x0eINTERNAL_ERROR\x10\x01\x12\x1b\n\x17TEMPORARILY_UNAVAILABLE\x10\x02\x12\x0c\n\x08IO_ERROR\x10\x03\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x04\x12\x1c\n\x17INVALID_PARAMETER_VALUE\x10\xe8\x07\x12\x17\n\x12\x45NDPOINT_NOT_FOUND\x10\xe9\x07\x12\x16\n\x11MALFORMED_REQUEST\x10\xea\x07\x12\x12\n\rINVALID_STATE\x10\xeb\x07\x12\x16\n\x11PERMISSION_DENIED\x10\xec\x07\x12\x15\n\x10\x46\x45\x41TURE_DISABLED\x10\xed\x07\x12\x1a\n\x15\x43USTOMER_UNAUTHORIZED\x10\xee\x07\x12\x1b\n\x16REQUEST_LIMIT_EXCEEDED\x10\xef\x07\x12\x1d\n\x18INVALID_STATE_TRANSITION\x10\xd1\x0f\x12\x1b\n\x16\x43OULD_NOT_ACQUIRE_LOCK\x10\xd2\x0f\x12\x1c\n\x17RESOURCE_ALREADY_EXISTS\x10\xb9\x17\x12\x1c\n\x17RESOURCE_DOES_NOT_EXIST\x10\xba\x17\x12\x13\n\x0eQUOTA_EXCEEDED\x10\xa1\x1f\x12\x1c\n\x17MAX_BLOCK_SIZE_EXCEEDED\x10\xa2\x1f\x12\x1b\n\x16MAX_READ_SIZE_EXCEEDED\x10\xa3\x1f\x12\x13\n\x0e\x44RY_RUN_FAILED\x10\x89\'\x12\x1c\n\x17RESOURCE_LIMIT_EXCEEDED\x10\x8a\'\x12\x18\n\x13\x44IRECTORY_NOT_EMPTY\x10\xf1.\x12\x18\n\x13\x44IRECTORY_PROTECTED\x10\xf2.\x12\x1f\n\x1aMAX_NOTEBOOK_SIZE_EXCEEDED\x10\xf3.:@\n\nvisibility\x12\x1d.google.protobuf.FieldOptions\x18\xd0\x86\x03 \x01(\x0e\x32\x0b.Visibility::\n\x11validate_required\x12\x1d.google.protobuf.FieldOptions\x18\xd1\x86\x03 \x01(\x08:4\n\x0bjson_inline\x12\x1d.google.protobuf.FieldOptions\x18\xd2\x86\x03 \x01(\x08:1\n\x08json_map\x12\x1d.google.protobuf.FieldOptions\x18\xd3\x86\x03 \x01(\x08:J\n\tfield_doc\x12\x1d.google.protobuf.FieldOptions\x18\xd4\x86\x03 \x03(\x0b\x32\x16.DocumentationMetadata:D\n\x03rpc\x12\x1e.google.protobuf.MethodOptions\x18\xd0\x86\x03 \x01(\x0b\x32\x15.DatabricksRpcOptions:L\n\nmethod_doc\x12\x1e.google.protobuf.MethodOptions\x18\xd4\x86\x03 \x03(\x0b\x32\x16.DocumentationMetadata:N\n\x0bmessage_doc\x12\x1f.google.protobuf.MessageOptions\x18\xd4\x86\x03 \x03(\x0b\x32\x16.DocumentationMetadata:N\n\x0bservice_doc\x12\x1f.google.protobuf.ServiceOptions\x18\xd4\x86\x03 \x03(\x0b\x32\x16.DocumentationMetadata:H\n\x08\x65num_doc\x12\x1c.google.protobuf.EnumOptions\x18\xd4\x86\x03 \x03(\x0b\x32\x16.DocumentationMetadata:O\n\x15\x65num_value_visibility\x12!.google.protobuf.EnumValueOptions\x18\xd0\x86\x03 \x01(\x0e\x32\x0b.Visibility:S\n\x0e\x65num_value_doc\x12!.google.protobuf.EnumValueOptions\x18\xd4\x86\x03 \x03(\x0b\x32\x16.DocumentationMetadataB*\n#com.databricks.api.proto.databricks\xe2?\x02\x10\x01')
+  serialized_options=_b('\n#com.databricks.api.proto.databricks'),
+  serialized_pb=_b('\n\x10\x64\x61tabricks.proto\x1a google/protobuf/descriptor.proto\"\xb1\x01\n\x14\x44\x61tabricksRpcOptions\x12 \n\tendpoints\x18\x01 \x03(\x0b\x32\r.HttpEndpoint\x12\x1f\n\nvisibility\x18\x02 \x01(\x0e\x32\x0b.Visibility\x12\x1f\n\x0b\x65rror_codes\x18\x03 \x03(\x0e\x32\n.ErrorCode\x12\x1e\n\nrate_limit\x18\x04 \x01(\x0b\x32\n.RateLimit\x12\x15\n\rrpc_doc_title\x18\x05 \x01(\t\"N\n\x0cHttpEndpoint\x12\x14\n\x06method\x18\x01 \x01(\t:\x04POST\x12\x0c\n\x04path\x18\x02 \x01(\t\x12\x1a\n\x05since\x18\x03 \x01(\x0b\x32\x0b.ApiVersion\"*\n\nApiVersion\x12\r\n\x05major\x18\x01 \x01(\x05\x12\r\n\x05minor\x18\x02 \x01(\x05\"@\n\tRateLimit\x12\x11\n\tmax_burst\x18\x01 \x01(\x03\x12 \n\x18max_sustained_per_second\x18\x02 \x01(\x03\"\x8c\x01\n\x15\x44ocumentationMetadata\x12\x11\n\tdocstring\x18\x01 \x01(\t\x12\x10\n\x08lead_doc\x18\x02 \x01(\t\x12\x1f\n\nvisibility\x18\x03 \x01(\x0e\x32\x0b.Visibility\x12\x1b\n\x13original_proto_path\x18\x04 \x03(\t\x12\x10\n\x08position\x18\x05 \x01(\x05\"g\n\x1f\x44\x61tabricksServiceExceptionProto\x12\x1e\n\nerror_code\x18\x01 \x01(\x0e\x32\n.ErrorCode\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x13\n\x0bstack_trace\x18\x03 \x01(\t*?\n\nVisibility\x12\n\n\x06PUBLIC\x10\x01\x12\x0c\n\x08INTERNAL\x10\x02\x12\x17\n\x13PUBLIC_UNDOCUMENTED\x10\x03*\xf6\x04\n\tErrorCode\x12\x12\n\x0eINTERNAL_ERROR\x10\x01\x12\x1b\n\x17TEMPORARILY_UNAVAILABLE\x10\x02\x12\x0c\n\x08IO_ERROR\x10\x03\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x04\x12\x1c\n\x17INVALID_PARAMETER_VALUE\x10\xe8\x07\x12\x17\n\x12\x45NDPOINT_NOT_FOUND\x10\xe9\x07\x12\x16\n\x11MALFORMED_REQUEST\x10\xea\x07\x12\x12\n\rINVALID_STATE\x10\xeb\x07\x12\x16\n\x11PERMISSION_DENIED\x10\xec\x07\x12\x15\n\x10\x46\x45\x41TURE_DISABLED\x10\xed\x07\x12\x1a\n\x15\x43USTOMER_UNAUTHORIZED\x10\xee\x07\x12\x1b\n\x16REQUEST_LIMIT_EXCEEDED\x10\xef\x07\x12\x1d\n\x18INVALID_STATE_TRANSITION\x10\xd1\x0f\x12\x1b\n\x16\x43OULD_NOT_ACQUIRE_LOCK\x10\xd2\x0f\x12\x1c\n\x17RESOURCE_ALREADY_EXISTS\x10\xb9\x17\x12\x1c\n\x17RESOURCE_DOES_NOT_EXIST\x10\xba\x17\x12\x13\n\x0eQUOTA_EXCEEDED\x10\xa1\x1f\x12\x1c\n\x17MAX_BLOCK_SIZE_EXCEEDED\x10\xa2\x1f\x12\x1b\n\x16MAX_READ_SIZE_EXCEEDED\x10\xa3\x1f\x12\x13\n\x0e\x44RY_RUN_FAILED\x10\x89\'\x12\x1c\n\x17RESOURCE_LIMIT_EXCEEDED\x10\x8a\'\x12\x18\n\x13\x44IRECTORY_NOT_EMPTY\x10\xf1.\x12\x18\n\x13\x44IRECTORY_PROTECTED\x10\xf2.\x12\x1f\n\x1aMAX_NOTEBOOK_SIZE_EXCEEDED\x10\xf3.:@\n\nvisibility\x12\x1d.google.protobuf.FieldOptions\x18\xd0\x86\x03 \x01(\x0e\x32\x0b.Visibility::\n\x11validate_required\x12\x1d.google.protobuf.FieldOptions\x18\xd1\x86\x03 \x01(\x08:J\n\tfield_doc\x12\x1d.google.protobuf.FieldOptions\x18\xd4\x86\x03 \x03(\x0b\x32\x16.DocumentationMetadata:D\n\x03rpc\x12\x1e.google.protobuf.MethodOptions\x18\xd0\x86\x03 \x01(\x0b\x32\x15.DatabricksRpcOptions:L\n\nmethod_doc\x12\x1e.google.protobuf.MethodOptions\x18\xd4\x86\x03 \x03(\x0b\x32\x16.DocumentationMetadata:N\n\x0bmessage_doc\x12\x1f.google.protobuf.MessageOptions\x18\xd4\x86\x03 \x03(\x0b\x32\x16.DocumentationMetadata:N\n\x0bservice_doc\x12\x1f.google.protobuf.ServiceOptions\x18\xd4\x86\x03 \x03(\x0b\x32\x16.DocumentationMetadata:H\n\x08\x65num_doc\x12\x1c.google.protobuf.EnumOptions\x18\xd4\x86\x03 \x03(\x0b\x32\x16.DocumentationMetadata:O\n\x15\x65num_value_visibility\x12!.google.protobuf.EnumValueOptions\x18\xd0\x86\x03 \x01(\x0e\x32\x0b.Visibility:S\n\x0e\x65num_value_doc\x12!.google.protobuf.EnumValueOptions\x18\xd4\x86\x03 \x03(\x0b\x32\x16.DocumentationMetadataB%\n#com.databricks.api.proto.databricks')
   ,
-  dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,scalapb_dot_scalapb__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_protobuf_dot_descriptor__pb2.DESCRIPTOR,])
 
 _VISIBILITY = _descriptor.EnumDescriptor(
   name='Visibility',
@@ -47,8 +46,8 @@ _VISIBILITY = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=695,
-  serialized_end=758,
+  serialized_start=672,
+  serialized_end=735,
 )
 _sym_db.RegisterEnumDescriptor(_VISIBILITY)
 
@@ -158,8 +157,8 @@ _ERRORCODE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=761,
-  serialized_end=1391,
+  serialized_start=738,
+  serialized_end=1368,
 )
 _sym_db.RegisterEnumDescriptor(_ERRORCODE)
 
@@ -208,25 +207,9 @@ validate_required = _descriptor.FieldDescriptor(
   message_type=None, enum_type=None, containing_type=None,
   is_extension=True, extension_scope=None,
   serialized_options=None, file=DESCRIPTOR)
-JSON_INLINE_FIELD_NUMBER = 50002
-json_inline = _descriptor.FieldDescriptor(
-  name='json_inline', full_name='json_inline', index=2,
-  number=50002, type=8, cpp_type=7, label=1,
-  has_default_value=False, default_value=False,
-  message_type=None, enum_type=None, containing_type=None,
-  is_extension=True, extension_scope=None,
-  serialized_options=None, file=DESCRIPTOR)
-JSON_MAP_FIELD_NUMBER = 50003
-json_map = _descriptor.FieldDescriptor(
-  name='json_map', full_name='json_map', index=3,
-  number=50003, type=8, cpp_type=7, label=1,
-  has_default_value=False, default_value=False,
-  message_type=None, enum_type=None, containing_type=None,
-  is_extension=True, extension_scope=None,
-  serialized_options=None, file=DESCRIPTOR)
 FIELD_DOC_FIELD_NUMBER = 50004
 field_doc = _descriptor.FieldDescriptor(
-  name='field_doc', full_name='field_doc', index=4,
+  name='field_doc', full_name='field_doc', index=2,
   number=50004, type=11, cpp_type=10, label=3,
   has_default_value=False, default_value=[],
   message_type=None, enum_type=None, containing_type=None,
@@ -234,7 +217,7 @@ field_doc = _descriptor.FieldDescriptor(
   serialized_options=None, file=DESCRIPTOR)
 RPC_FIELD_NUMBER = 50000
 rpc = _descriptor.FieldDescriptor(
-  name='rpc', full_name='rpc', index=5,
+  name='rpc', full_name='rpc', index=3,
   number=50000, type=11, cpp_type=10, label=1,
   has_default_value=False, default_value=None,
   message_type=None, enum_type=None, containing_type=None,
@@ -242,7 +225,7 @@ rpc = _descriptor.FieldDescriptor(
   serialized_options=None, file=DESCRIPTOR)
 METHOD_DOC_FIELD_NUMBER = 50004
 method_doc = _descriptor.FieldDescriptor(
-  name='method_doc', full_name='method_doc', index=6,
+  name='method_doc', full_name='method_doc', index=4,
   number=50004, type=11, cpp_type=10, label=3,
   has_default_value=False, default_value=[],
   message_type=None, enum_type=None, containing_type=None,
@@ -250,7 +233,7 @@ method_doc = _descriptor.FieldDescriptor(
   serialized_options=None, file=DESCRIPTOR)
 MESSAGE_DOC_FIELD_NUMBER = 50004
 message_doc = _descriptor.FieldDescriptor(
-  name='message_doc', full_name='message_doc', index=7,
+  name='message_doc', full_name='message_doc', index=5,
   number=50004, type=11, cpp_type=10, label=3,
   has_default_value=False, default_value=[],
   message_type=None, enum_type=None, containing_type=None,
@@ -258,7 +241,7 @@ message_doc = _descriptor.FieldDescriptor(
   serialized_options=None, file=DESCRIPTOR)
 SERVICE_DOC_FIELD_NUMBER = 50004
 service_doc = _descriptor.FieldDescriptor(
-  name='service_doc', full_name='service_doc', index=8,
+  name='service_doc', full_name='service_doc', index=6,
   number=50004, type=11, cpp_type=10, label=3,
   has_default_value=False, default_value=[],
   message_type=None, enum_type=None, containing_type=None,
@@ -266,7 +249,7 @@ service_doc = _descriptor.FieldDescriptor(
   serialized_options=None, file=DESCRIPTOR)
 ENUM_DOC_FIELD_NUMBER = 50004
 enum_doc = _descriptor.FieldDescriptor(
-  name='enum_doc', full_name='enum_doc', index=9,
+  name='enum_doc', full_name='enum_doc', index=7,
   number=50004, type=11, cpp_type=10, label=3,
   has_default_value=False, default_value=[],
   message_type=None, enum_type=None, containing_type=None,
@@ -274,7 +257,7 @@ enum_doc = _descriptor.FieldDescriptor(
   serialized_options=None, file=DESCRIPTOR)
 ENUM_VALUE_VISIBILITY_FIELD_NUMBER = 50000
 enum_value_visibility = _descriptor.FieldDescriptor(
-  name='enum_value_visibility', full_name='enum_value_visibility', index=10,
+  name='enum_value_visibility', full_name='enum_value_visibility', index=8,
   number=50000, type=14, cpp_type=8, label=1,
   has_default_value=False, default_value=1,
   message_type=None, enum_type=None, containing_type=None,
@@ -282,7 +265,7 @@ enum_value_visibility = _descriptor.FieldDescriptor(
   serialized_options=None, file=DESCRIPTOR)
 ENUM_VALUE_DOC_FIELD_NUMBER = 50004
 enum_value_doc = _descriptor.FieldDescriptor(
-  name='enum_value_doc', full_name='enum_value_doc', index=11,
+  name='enum_value_doc', full_name='enum_value_doc', index=9,
   number=50004, type=11, cpp_type=10, label=3,
   has_default_value=False, default_value=[],
   message_type=None, enum_type=None, containing_type=None,
@@ -344,8 +327,8 @@ _DATABRICKSRPCOPTIONS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=78,
-  serialized_end=255,
+  serialized_start=55,
+  serialized_end=232,
 )
 
 
@@ -389,8 +372,8 @@ _HTTPENDPOINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=257,
-  serialized_end=335,
+  serialized_start=234,
+  serialized_end=312,
 )
 
 
@@ -427,8 +410,8 @@ _APIVERSION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=337,
-  serialized_end=379,
+  serialized_start=314,
+  serialized_end=356,
 )
 
 
@@ -465,8 +448,8 @@ _RATELIMIT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=381,
-  serialized_end=445,
+  serialized_start=358,
+  serialized_end=422,
 )
 
 
@@ -524,8 +507,8 @@ _DOCUMENTATIONMETADATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=448,
-  serialized_end=588,
+  serialized_start=425,
+  serialized_end=565,
 )
 
 
@@ -569,8 +552,8 @@ _DATABRICKSSERVICEEXCEPTIONPROTO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=590,
-  serialized_end=693,
+  serialized_start=567,
+  serialized_end=670,
 )
 
 _DATABRICKSRPCOPTIONS.fields_by_name['endpoints'].message_type = _HTTPENDPOINT
@@ -590,8 +573,6 @@ DESCRIPTOR.enum_types_by_name['Visibility'] = _VISIBILITY
 DESCRIPTOR.enum_types_by_name['ErrorCode'] = _ERRORCODE
 DESCRIPTOR.extensions_by_name['visibility'] = visibility
 DESCRIPTOR.extensions_by_name['validate_required'] = validate_required
-DESCRIPTOR.extensions_by_name['json_inline'] = json_inline
-DESCRIPTOR.extensions_by_name['json_map'] = json_map
 DESCRIPTOR.extensions_by_name['field_doc'] = field_doc
 DESCRIPTOR.extensions_by_name['rpc'] = rpc
 DESCRIPTOR.extensions_by_name['method_doc'] = method_doc
@@ -647,8 +628,6 @@ _sym_db.RegisterMessage(DatabricksServiceExceptionProto)
 visibility.enum_type = _VISIBILITY
 google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension(visibility)
 google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension(validate_required)
-google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension(json_inline)
-google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension(json_map)
 field_doc.message_type = _DOCUMENTATIONMETADATA
 google_dot_protobuf_dot_descriptor__pb2.FieldOptions.RegisterExtension(field_doc)
 rpc.message_type = _DATABRICKSRPCOPTIONS
