@@ -1,4 +1,6 @@
-"""APIs for running MLflow projects locally or remotely."""
+"""
+The ``mlflow.projects`` module provides an API for running MLflow projects locally or remotely.
+"""
 
 from __future__ import print_function
 
@@ -10,7 +12,7 @@ import re
 import subprocess
 import tempfile
 
-from mlflow.projects.submitted_run import LocalSubmittedRun
+from mlflow.projects.submitted_run import LocalSubmittedRun, SubmittedRun
 from mlflow.projects import _project_spec
 from mlflow.exceptions import ExecutionException
 from mlflow.entities import RunStatus, SourceType, Param
@@ -42,7 +44,7 @@ def _run(uri, entry_point="main", version=None, parameters=None, experiment_id=N
     project = _project_spec.load_project(work_dir)
     project.get_entry_point(entry_point)._validate_parameters(parameters)
     if run_id:
-        active_run = tracking.get_service().get_run(run_id)
+        active_run = tracking.MlflowClient().get_run(run_id)
     else:
         active_run = _create_run(uri, exp_id, work_dir, entry_point)
 
@@ -51,7 +53,7 @@ def _run(uri, entry_point="main", version=None, parameters=None, experiment_id=N
     entry_point_obj = project.get_entry_point(entry_point)
     final_params, extra_params = entry_point_obj.compute_parameters(parameters, storage_dir=None)
     for key, value in (list(final_params.items()) + list(extra_params.items())):
-        tracking.get_service().log_param(active_run.info.run_uuid, key, value)
+        tracking.MlflowClient().log_param(active_run.info.run_uuid, key, value)
 
     if mode == "databricks":
         from mlflow.projects.databricks import run_databricks
@@ -83,43 +85,48 @@ def run(uri, entry_point="main", version=None, parameters=None, experiment_id=No
         mode=None, cluster_spec=None, git_username=None, git_password=None, use_conda=True,
         storage_dir=None, block=True, run_id=None):
     """
-    Run an MLflow project from the given URI.
+    Run an MLflow project. The project can be local or stored at a Git URI.
 
-    Supports downloading projects from Git URIs with a specified version, or copying them from
-    the file system. For Git-based projects, a commit can be specified as the ``version``.
+    You can run the project locally or remotely on a Databricks.
+
+    For information on using this method in chained workflows, see `Building Multistep Workflows
+    <../projects.html#building-multistep-workflows>`_.
 
     :raises ``ExecutionException``: If a run launched in blocking mode is unsuccessful.
 
-    :param uri: URI of project to run. Expected to be either a relative/absolute local filesystem
-                path or a git repository URI (e.g. https://github.com/mlflow/mlflow-example)
+    :param uri: URI of project to run. A local filesystem path
+                or a Git repository URI (e.g. https://github.com/mlflow/mlflow-example)
                 pointing to a project directory containing an MLproject file.
     :param entry_point: Entry point to run within the project. If no entry point with the specified
-                        name is found, attempts to run the project file ``entry_point`` as a script,
-                        using "python" to run .py files and the default shell (specified by
-                        environment variable $SHELL) to run .sh files.
+                        name is found, runs the project file ``entry_point`` as a script,
+                        using "python" to run ``.py`` files and the default shell (specified by
+                        environment variable ``$SHELL``) to run ``.sh`` files.
+    :param version: For Git-based projects, a commit hash.
     :param experiment_id: ID of experiment under which to launch the run.
-    :param mode: Execution mode for the run. Can be set to "local" or "databricks".
-    :param cluster_spec: Path to JSON file describing the cluster to use when launching a run on
-                         Databricks.
+    :param mode: Execution mode of the run: "local" or "databricks".
+    :param cluster_spec: When ``mode`` is "databricks", path to a JSON file containing a
+                         `Databricks cluster specification
+                         <https://docs.databricks.com/api/latest/jobs.html#clusterspec>`_
+                         to use when launching a run.
     :param git_username: Username for HTTP(S) authentication with Git.
     :param git_password: Password for HTTP(S) authentication with Git.
-    :param use_conda: If True (the default), creates a new Conda environment for the run and
-                      installs project dependencies within that environment. Otherwise, runs the
+    :param use_conda: If True (the default), create a new Conda environment for the run and
+                      install project dependencies within that environment. Otherwise, run the
                       project in the current environment without installing any project
                       dependencies.
-    :param storage_dir: Only used if ``mode`` is local. MLflow will download artifacts from
-                        distributed URIs passed to parameters of type 'path' to subdirectories of
+    :param storage_dir: Used only if ``mode`` is "local". MLflow downloads artifacts from
+                        distributed URIs passed to parameters of type ``path`` to subdirectories of
                         ``storage_dir``.
-    :param block: Whether or not to block while waiting for a run to complete. Defaults to True.
+    :param block: Whether to block while waiting for a run to complete. Defaults to True.
                   Note that if ``block`` is False and mode is "local", this method will return, but
                   the current process will block when exiting until the local run completes.
                   If the current process is interrupted, any asynchronous runs launched via this
                   method will be terminated.
     :param run_id: Note: this argument is used internally by the MLflow project APIs and should
-                   not be specified. If specified, the given run ID will be used instead of
+                   not be specified. If specified, the run ID will be used instead of
                    creating a new run.
-    :return: A ``SubmittedRun`` exposing information (e.g. run ID) about the launched run. The
-             returned ``SubmittedRun`` is not thread-safe.
+    :return: :py:class:`mlflow.projects.SubmittedRun` exposing information (e.g. run ID)
+             about the launched run.
     """
     submitted_run_obj = _run(
         uri=uri, entry_point=entry_point, version=version, parameters=parameters,
@@ -138,7 +145,7 @@ def _wait_for(submitted_run_obj):
     # Note: there's a small chance we fail to report the run's status to the tracking server if
     # we're interrupted before we reach the try block below
     try:
-        active_run = tracking.get_service().get_run(run_id) if run_id is not None else None
+        active_run = tracking.MlflowClient().get_run(run_id) if run_id is not None else None
         if submitted_run_obj.wait():
             eprint("=== Run (ID '%s') succeeded ===" % run_id)
             _maybe_set_run_terminated(active_run, "FINISHED")
@@ -296,10 +303,10 @@ def _maybe_set_run_terminated(active_run, status):
     if active_run is None:
         return
     run_id = active_run.info.run_uuid
-    cur_status = tracking.get_service().get_run(run_id).info.status
+    cur_status = tracking.MlflowClient().get_run(run_id).info.status
     if RunStatus.is_terminated(cur_status):
         return
-    tracking.get_service().set_terminated(run_id, status)
+    tracking.MlflowClient().set_terminated(run_id, status)
 
 
 def _get_entry_point_command(project, entry_point, parameters, conda_env_name, storage_dir):
@@ -379,7 +386,7 @@ def _create_run(uri, experiment_id, work_dir, entry_point):
         source_name = tracking.utils._get_git_url_if_present(_expand_uri(uri))
     else:
         source_name = _expand_uri(uri)
-    active_run = tracking.get_service().create_run(
+    active_run = tracking.MlflowClient().create_run(
         experiment_id=experiment_id,
         source_name=source_name,
         source_version=_get_git_commit(work_dir),
@@ -413,3 +420,8 @@ def _invoke_mlflow_run_subprocess(
     mlflow_run_subprocess = _run_mlflow_run_cmd(
         mlflow_run_arr, _get_run_env_vars(run_id, experiment_id))
     return LocalSubmittedRun(run_id, mlflow_run_subprocess)
+
+__all__ = [
+    "run",
+    "SubmittedRun"
+]

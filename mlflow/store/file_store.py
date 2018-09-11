@@ -195,7 +195,7 @@ class FileStore(AbstractStore):
     def update_run_info(self, run_uuid, run_status, end_time):
         _validate_run_id(run_uuid)
         run_info = self.get_run(run_uuid).info
-        new_info = run_info.copy_with_overrides(run_status, end_time)
+        new_info = run_info._copy_with_overrides(run_status, end_time)
         run_dir = self._get_run_dir(run_info.experiment_id, run_info.run_uuid)
         new_info_dict = self._make_run_info_dict(new_info)
         write_yaml(run_dir, FileStore.META_DATA_FILE_NAME, new_info_dict, overwrite=True)
@@ -211,7 +211,6 @@ class FileStore(AbstractStore):
                             "exists." % experiment_id)
         run_uuid = uuid.uuid4().hex
         artifact_uri = self._get_artifact_dir(experiment_id, run_uuid)
-        num_runs = len(self._list_run_uuids(experiment_id))
         run_info = RunInfo(run_uuid=run_uuid, experiment_id=experiment_id,
                            name="",
                            artifact_uri=artifact_uri, source_type=source_type,
@@ -228,8 +227,8 @@ class FileStore(AbstractStore):
         mkdir(run_dir, FileStore.ARTIFACTS_FOLDER_NAME)
         for tag in tags:
             self.set_tag(run_uuid, tag)
-        self.set_tag(run_uuid, RunTag(
-            key=MLFLOW_RUN_NAME, value=run_name or "Run %s" % num_runs))
+        if run_name:
+            self.set_tag(run_uuid, RunTag(key=MLFLOW_RUN_NAME, value=run_name))
         return Run(run_info=run_info, run_data=None)
 
     def _make_run_info_dict(self, run_info):
